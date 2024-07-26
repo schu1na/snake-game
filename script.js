@@ -6,6 +6,8 @@ function criar_matriz(colunas, linhas){
     return Array.from({ length: colunas }, () => Array(linhas).fill(0));
 }
 
+
+// cobra.body tem um indice a mais, para utilizar na atualiazacao
 function criar_cobra(linhas, direcao_inicial){
     let cobra = {
         body: [{x: 3, y: linhas/2}, {x:2, y:linhas/2}, {x:1, y:linhas/2}, {x:0, y:linhas/2}],
@@ -14,6 +16,7 @@ function criar_cobra(linhas, direcao_inicial){
     return cobra
 }
 
+//atualiza com base que ela esta
 function atualizar_posicao_cobra(cobra){
     tamanho_cobra = cobra.body.length
     for(let i = tamanho_cobra-1; i >= 0; i--){
@@ -40,6 +43,7 @@ function atualizar_posicao_cobra(cobra){
     }
 }
 
+//atualiza o campo com a cobra dentro, limpando o resto que ela deixa
 function atualizar_campo_cobra(campo, corpo_cobra){
     tamanho_cobra = cobra.body.length
     for(let i=0; i<tamanho_cobra - 1; i++){
