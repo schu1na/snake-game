@@ -3,9 +3,8 @@ const colunas = 10;
 const direcao_inicial = "right";
 
 function criar_matriz(colunas, linhas){
-    return Array.from({ length: colunas }, () => Array(linhas).fill(0));
+    return Array.from({ length: colunas }, () => Array(linhas).fill(" "));
 }
-
 
 // cobra.body tem um indice a mais, para utilizar na atualiazacao
 function criar_cobra(linhas, direcao_inicial){
@@ -47,9 +46,9 @@ function atualizar_posicao_cobra(cobra){
 function atualizar_campo_cobra(campo, corpo_cobra){
     tamanho_cobra = cobra.body.length
     for(let i=0; i<tamanho_cobra - 1; i++){
-        campo[corpo_cobra[i].y][corpo_cobra[i].x] = "x";
+        campo[corpo_cobra[i].y][corpo_cobra[i].x] = "o";
     }
-    campo[corpo_cobra[tamanho_cobra - 1].y][corpo_cobra[tamanho_cobra - 1].x] = 0;
+    campo[corpo_cobra[tamanho_cobra - 1].y][corpo_cobra[tamanho_cobra - 1].x] = " ";
 }
 
 function imprimir_campo(campo){
@@ -59,3 +58,13 @@ function imprimir_campo(campo){
 
 let campo = criar_matriz(linhas, colunas);
 let cobra = criar_cobra(linhas, direcao_inicial);
+
+//jogo rodando aiii papaiiiii
+function game_loop(){
+    console.clear();
+    atualizar_posicao_cobra(cobra);
+    atualizar_campo_cobra(campo, cobra.body);
+    imprimir_campo(campo);
+}
+
+setInterval(() => game_loop(), 100);
